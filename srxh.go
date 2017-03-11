@@ -15,16 +15,16 @@ func binsrxh(key int, values []int) (position int, found bool) {
 
 	mid := len(values) / 2
 
+	if key < values[mid] {
+		// key not above midpoint
+		return binsrxh(key, values[0:mid])
+	}
+
 	if key > values[mid] {
 		// key not below midpoint
 		position, found = binsrxh(key, values[mid+1:])
 		position += mid + 1
 		return
-	}
-
-	if key < values[mid] {
-		// key not above midpoint
-		return binsrxh(key, values[0:mid])
 	}
 
 	// the key might, or might not be at the midpoint
