@@ -7,20 +7,20 @@ import (
 
 var srxhTests = []struct {
 	key           int
-	values        []int
 	expectedPos   int
 	expectedFound bool
+	values        []int
 }{
-	{3, []int{}, 0, false},
-	{7, []int{0, 1, 2, 3, 4, 5, 6}, 7, false},
-	{-1, []int{0, 1, 2, 3, 4, 5, 6}, 0, false},
-	{3, []int{0, 1, 2, 4, 5, 6}, 3, false},
+	{3, 0, false, []int{}},
+	{7, 7, false, []int{0, 1, 2, 3, 4, 5, 6}},
+	{-1, 0, false, []int{0, 1, 2, 3, 4, 5, 6}},
+	{3, 3, false, []int{0, 1, 2, 4, 5, 6}},
 
-	{0, []int{0}, 0, true},
-	{1, []int{0, 1}, 1, true},
-	{3, []int{0, 1, 2, 3, 4, 5, 6}, 3, true},
-	{0, []int{0, 1, 2, 3, 4, 5, 6}, 0, true},
-	{6, []int{0, 1, 2, 3, 4, 5, 6}, 6, true},
+	{0, 0, true, []int{0}},
+	{1, 1, true, []int{0, 1}},
+	{3, 3, true, []int{0, 1, 2, 3, 4, 5, 6}},
+	{0, 0, true, []int{0, 1, 2, 3, 4, 5, 6}},
+	{6, 6, true, []int{0, 1, 2, 3, 4, 5, 6}},
 }
 
 func TestSrxh(t *testing.T) {
