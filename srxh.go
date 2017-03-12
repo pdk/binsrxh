@@ -9,26 +9,22 @@ func binsrxh(key int, values []int) (position int, found bool) {
 		return 0, false
 	}
 
-	if len(values) == 1 && values[0] == key {
-		return 0, true
-	}
-
 	mid := len(values) / 2
 
 	if key < values[mid] {
-		// key not above midpoint
+		// position is below the midpoint
 		return binsrxh(key, values[0:mid])
 	}
 
-	if key > values[mid] {
-		// key not below midpoint
+	if values[mid] < key {
+		// position is above the midpoint
 		position, found = binsrxh(key, values[mid+1:])
 		position += mid + 1
 		return
 	}
 
-	// the key might, or might not be at the midpoint
-	return mid, values[mid] == key
+	// this is the place
+	return mid, true
 }
 
 func main() {
